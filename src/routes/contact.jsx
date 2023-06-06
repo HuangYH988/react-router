@@ -1,16 +1,21 @@
-import { Form } from "react-router-dom";
+import { Form, useLoaderData } from "react-router-dom";
+import { getContact } from "../contacts";
 
+export async function loader({ params }) {
+  return getContact(params.contactId);
+}
 
 export default function Contact() {
-  const contact = {
-    first: "Mortal",
-    last: "Kombat",
-    // avatar: "https://placekitten.com/g/200/200",
-    avatar: "https://upload.wikimedia.org/wikipedia/en/b/b1/Mortal_Kombat_Logo.svg",
-    twitter: "*Variation",
-    notes: "Mortal Kombat Mobile characters",
-    favorite: true,
-  };
+  const contact = useLoaderData();
+  // const contact = {
+  //   first: "Mortal",
+  //   last: "Kombat",
+  //   // avatar: "https://placekitten.com/g/200/200",
+  //   avatar: "https://upload.wikimedia.org/wikipedia/en/b/b1/Mortal_Kombat_Logo.svg",
+  //   twitter: "*Variation",
+  //   notes: "Mortal Kombat Mobile characters",
+  //   favorite: true,
+  // };
 
   return (
     <div id="contact">
